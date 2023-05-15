@@ -1,10 +1,10 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 
-const ie = [{date: new Date(), source: 'work', amount: '1200'}, {}, {}];
+const ie = [{date: new Date(), source: 'work', amount: '1200'}];
 const button = (innerText, v) => {
     return (<Button variant={v} class="btn">{innerText}</Button>);
 }
@@ -21,8 +21,8 @@ const incomeTable = () => {
         <tbody>
             {Array.from(ie).map((_, index) => (
                 <tr key={index}>{
-                    Array.from(Object.keys(ie[index])).map((_, i) => (
-                        <td key={i}>{i}</td>
+                    Object.keys(ie[index]).map(i => (
+                        <td key={i}>{'' + ie[index][i]}</td>
                     ))
                 }</tr>
             ))}
