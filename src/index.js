@@ -21,8 +21,8 @@ const incomeTable = () => {
         <tbody>
             {Array.from(ie).map((_, index) => (
                 <tr key={index}>{
-                    Array.from(ie).map((_, index) => (
-                        <td key={index}>{index}</td>
+                    Array.from(Object.keys(ie[index])).map((_, i) => (
+                        <td key={i}>{i}</td>
                     ))
                 }</tr>
             ))}
