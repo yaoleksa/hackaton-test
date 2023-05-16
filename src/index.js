@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 
 const ie = [{date: new Date(), source: 'work', amount: '1200'}];
 const button = (innerText, v) => {
-    return (<Button variant={v} class="btn">{innerText}</Button>);
+    return (<Button variant={v} className="btn">{innerText}</Button>);
 }
 const incomeTable = () => {
     return (<>
