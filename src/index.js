@@ -4,8 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
 
-const ie = [{date: new Date(), source: 'work', amount: '1200'}];
+const ie = [];
+await axios.get(`${window.location.href}profitInfo`).then(response => {
+    ie.push(response.data);
+});
 const hide = () => {
     let form = document.getElementById('form');
     if(form.style.display == 'none'){
@@ -14,25 +18,33 @@ const hide = () => {
         form.style.display = 'none';
     }
 }
+const getProfitData = () => {
+    axios.get(`${window.location.href}profitInfo`).then(response => {
+        ie = response.data;
+    });
+}
 const inputForm = () => {
     return (
+        <>
         <Form id="form" style={{display: 'none'}}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Transaction date</Form.Label>
-                <Form.Control type="datetime-local" placeholder="Enter email" />
+                <Form.Control type="datetime-local" placeholder="Enter date" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Income Source</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="text" placeholder="Enter source" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Label>Amount</Form.Label>
+                <Form.Control type="number" placeholder="0.0"></Form.Control>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" onClick={getProfitData}>
                 Submit
             </Button>
         </Form>
+    </>
     );
 }
 const button = (innerText, v, f) => {

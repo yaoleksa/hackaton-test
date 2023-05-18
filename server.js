@@ -24,6 +24,13 @@ app.use(bodyParser.json());
 app.get('/', (req,res) => {
     res.send('./');
 });
+app.get('/profitInfo', (req, res) => {
+    res.send({
+        date: '2023-13-14',
+        source: 'work',
+        amount: 5.0
+    });
+});
 app.post('/insertIncome', (req, res) => {
     db.serialize(() => {
         console.log('?');
