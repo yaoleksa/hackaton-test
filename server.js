@@ -33,7 +33,7 @@ app.get('/profitInfo', (req, res) => {
 });
 app.post('/insertIncome', (req, res) => {
     db.serialize(() => {
-        console.log('?');
+        console.log(req.body);
         db.run(`INSERT INTO Profit VALUES(${req.body.date}, ${req.body.source}, ${req.body.amount})`);
         db.each('SELECT * FROM Profit', (err, row) => {
             console.log(row);

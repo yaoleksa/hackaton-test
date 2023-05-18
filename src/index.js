@@ -18,10 +18,8 @@ const hide = () => {
         form.style.display = 'none';
     }
 }
-const getProfitData = () => {
-    axios.get(`${window.location.href}profitInfo`).then(response => {
-        ie = response.data;
-    });
+const postProfitData = () => {
+    axios.post(`${window.location.href}insertIncome`, "date='2023-05-17'&source='work'&amount=9");
 }
 const inputForm = () => {
     return (
@@ -40,7 +38,7 @@ const inputForm = () => {
                 <Form.Label>Amount</Form.Label>
                 <Form.Control type="number" placeholder="0.0"></Form.Control>
             </Form.Group>
-            <Button variant="primary" onClick={getProfitData}>
+            <Button variant="primary" onClick={postProfitData}>
                 Submit
             </Button>
         </Form>
